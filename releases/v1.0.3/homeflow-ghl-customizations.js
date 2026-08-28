@@ -22,7 +22,7 @@
   // ];
   const LEGACY_EXCLUDED_LOCATION_IDS = [];
 
-  const EXCLUSION_API_ENDPOINT = "https://ghl-whitelabel-setup.vercel.app/api/location-exclusion";
+  const EXCLUSION_API_ENDPOINT = "https://ghl-agency-whitelabel.vercel.app/api/location-exclusion";
   const EXCLUSION_TTL_MS = 60 * 1000; // 60 seconds TTL
 
   const HOMEFLOW_LOCATION_ID = "XzzLQ42sqJR43o30CP34";

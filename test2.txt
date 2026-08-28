@@ -9,4 +9,4 @@
   data-user-type="{{user.type}}"></script>
 
 
-<script src="https://ghl-whitelabel-setup.vercel.app/releases/v1.0.2/homeflow-ghl-customizations.js"></script>
+<script src="https://ghl-agency-whitelabel.vercel.app/releases/v1.0.2/homeflow-ghl-customizations.js"></script>
