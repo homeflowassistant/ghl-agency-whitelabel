@@ -107,13 +107,22 @@ module.exports = async function handler(req, res) {
 
     const isExcluded = homeflowExists || royalExists;
 
+    // `excluded` keeps its original meaning for releases <= v1.0.5.
+    // `homeflow` / `royalReview` (added for v1.0.6) say which project the
+    // location was found in, so the script can scope HomeFlow-only rules.
+    const payload = {
+      excluded: isExcluded,
+      homeflow: homeflowExists,
+      royalReview: royalExists
+    };
+
     // Apply production CDN caching policy for successful responses:
     // - s-maxage=60: Vercel CDN caches fresh result per query URL for 60s
     // - stale-while-revalidate=300: Serve stale cache up to 5 mins while revalidating
     // - stale-if-error=3600: Serve stale cache up to 1 hr if upstream revalidation fails
     res.setHeader('Cache-Control', 'no-store, max-age=0');
 
-    return res.status(200).json({ excluded: isExcluded });
+    return res.status(200).json(payload);
   } catch (err) {
     // Log server-side error without exposing secrets
     console.error('Location exclusion check error:', err.message);
